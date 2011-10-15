@@ -1,3 +1,6 @@
+# The Guard.js
+# https://github.com/dariocravero/the-guard.js
+# (c) 2011 Darío Javier Cravero
 class TheGuard
   version: '0.0.1.a'
   current_user: null
