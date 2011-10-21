@@ -17,40 +17,55 @@ Include the-guard.js and its dependencies:
 
 Then you need to provide some rules. Here's an example of how your rules may look like:
 
-    #Define your rules
-    rules =
-      guest:
-        users:
-          create: true
-      user:
-        users:
-          create: true
-          read: (user, the_guard) ->
-            return false unless user?
-            the_guard.current_user.id == user.id
-          update: (user, the_guard) ->
-            return false unless user?
-            the_guard.current_user.id == user.id
-      admin:
-        users:
-          create: true
-          read: true
-          update: true
-          delete: true
-        another_resource:
-          create: true
-          read: true
-          update: true
-          delete: true
+    // Define your rules
+    var rules = {
+        guest: {
+          users: {
+            create: true
+          }
+        },
+        user: {
+          users: {
+            create: true,
+            read: function(user, the_guard) {
+              if (user == null) {
+                return false;
+              }
+              return the_guard.current_user.id === user.id;
+            },
+            update: function(user, the_guard) {
+              if (user == null) {
+                return false;
+              }
+              return the_guard.current_user.id === user.id;
+            }
+          }
+        },
+        admin: {
+          users: {
+            create: true,
+            read: true,
+            update: true,
+            "delete": true
+          },
+          another_resource: {
+            create: true,
+            read: true,
+            update: true,
+            "delete": true
+          }
+        }
+      };
+    
      
-    # Make sure we have a user...
-    user = new User(2, ["user"])
+    // Make sure we have a user...
+    var user = new User(2, ["user"]);
      
-    # Create a guard
-    the_guard = new TheGuard(rules)
-    the_guard.current_user = user
+    // Create a guard
+    var the_guard = new TheGuard(rules);
+    the_guard.current_user = user;
      
-    # Ask for something! ;)
+    // Ask for something! ;)
     the_guard.can('read', 'users', user)
 
 
