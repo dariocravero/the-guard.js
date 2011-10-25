@@ -12,7 +12,7 @@ It's in a super-alpha state, so any contributions/suggestions/comments are more 
 
 Include the-guard.js and its dependencies:
 
-* **An MD5 library.** There's one in the vendor folder you can use. I got it a while ago, minified it and can't remember where I took it from so if you can tell the author/src please tell me! :) 
+* **An MD5 library.** [There's one](http://www.myersdaily.org/joseph/javascript/md5-text.html) in the vendor folder you can use. ~~I got it a while ago, minified it and can't remember where I took it from so if you can tell the author/src please tell me!~~ Thanks [lindsayevans](https://github.com/lindsayevans) for the tip on the author!.. :) 
 * **A user object.** There's a libray agnostic user object, and [Backbone](http://documentcloud.github.com/backbone) and [Spine](http://spinejs.com) sample models. All you really need is a roles method that returns an array of strings which are your roles.
 
 Then you need to provide some rules. Here's an example of how your rules may look like:
